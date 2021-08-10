@@ -119,11 +119,33 @@ class HBNBCommand(cmd.Cmd):
         if len(arguments) == 0:
             print("** class name missing **")
             return
-        elif arguments[0] not in HBNBCommand.classes:
+        if arguments[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        new_instance = HBNBCommand.classes[arguments[0]]()
-        storage.save()
+        dictionary = {}
+        for i in arguments[1:]:
+            """Se tokeniza el iterador, la position cero
+            sera la key y 1 el value"""
+            token_value = i.split("=")
+            key = token_value[0]
+            value = token_value[1]
+            """Ahora se pregunta si tiene "" o _
+            y se hace el cambio"""
+            if value[0] == '"':
+                value = value.strip('"')
+                value = value.replace('_', ' ')
+            else:
+                """Ahora se cambia los string para que
+                sean numbers"""
+                value = eval(value)
+            dictionary[key] = value
+            # en el dic se guardan los valores ya organizados
+            if dictionary == {}:
+                new_instance = HBNBCommand.classes[arguments[0]]()
+            else:
+                new_instance = HBNBCommand.classes[arguments[0]]()
+                for key, value in dictionary.items():
+                    setattr(new_instance, key, value)
         print(new_instance.id)
         storage.save()
 
@@ -320,6 +342,7 @@ class HBNBCommand(cmd.Cmd):
         """ Help information for the update class """
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
+        
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
