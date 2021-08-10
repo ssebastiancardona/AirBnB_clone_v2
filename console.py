@@ -115,10 +115,10 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
         """ Create an object of any class"""
-        arguments = args.split()
-        if len(arguments) == 0:
+        if len(args) == 0:
             print("** class name missing **")
             return
+        arguments = args.split()
         if arguments[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
@@ -133,7 +133,7 @@ class HBNBCommand(cmd.Cmd):
             y se hace el cambio"""
             if value[0] == '"':
                 value = value.strip('"')
-                value = value.replace('_', ' ')
+                value = value.replace("_", " ")
             else:
                 """Ahora se cambia los string para que
                 sean numbers"""
