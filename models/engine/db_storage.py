@@ -14,6 +14,9 @@ class DBStorage:
     __session = None
 
     def __init__(self):
+         """inicializacion"""
         self.__engine = create_engine()
 
-    def all(self, cls=None): ()
+    def all(self, cls=None):
+         """auto"""
+         ()
