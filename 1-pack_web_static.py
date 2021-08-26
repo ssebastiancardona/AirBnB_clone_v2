@@ -7,7 +7,7 @@ def do_pack():
     '''
     create a .tgz archive from the contents
     of the web_static
-    using the function do_pack
+    using the function do_pack.
     '''
     try:
         now_string = datetime.now().strftime('%Y%m%d%H%M%S')
