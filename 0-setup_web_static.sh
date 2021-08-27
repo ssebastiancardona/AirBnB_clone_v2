@@ -19,5 +19,5 @@ echo "
 
 ln -sf /data/web_static/releases/test/ /data/web_static/current
 chown -R ubuntu:ubuntu /data/
-sed -i "47 a \\tlocation /hbnb_static {\n\talias /data/web_static/current/;\n\tautoindex off;\n\t}\n" /etc/nginx/sites-available/default
+sed -i "\\tlocation /hbnb_static {\n\talias /data/web_static/current/;\n\tautoindex off;\n\t}\n" /etc/nginx/sites-available/default
 service nginx restart
