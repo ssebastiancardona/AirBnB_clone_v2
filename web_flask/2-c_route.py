@@ -14,7 +14,7 @@ def hello2():
     return 'HBNB'
 # Display "C" followed by the value of the text variable
 @app.route('/c/<text>', strict_slashes=False)
-    def c_route(text):
+def c_route(text):
     return 'C {}'.format(text.remplace('_', ' '))
 
 if __name__ == "__main__":
